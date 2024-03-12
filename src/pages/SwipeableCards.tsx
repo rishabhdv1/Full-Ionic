@@ -48,12 +48,7 @@ const SwipeableCards: React.FC = () => {
         </IonRow>
       </IonHeader>
       <IonContent>
-        <IonCard
-          id="vCenter"
-          ref={cardRef}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-        >
+        <IonCard id="vCenter" ref={cardRef} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} >
           <IonCardHeader>
             <IonCardTitle>{titles[imageIndex]}</IonCardTitle>
           </IonCardHeader>

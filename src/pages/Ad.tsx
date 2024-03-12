@@ -17,13 +17,15 @@ const Ad: React.FC = () => {
             <IonCol size="2">
             </IonCol>
             <IonCol size="10">
-              One/Two
+              Ad
             </IonCol>
           </IonRow>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
-        
+      <IonContent className="ion-padding">
+        <h1>Ad sample</h1>
+        <strong>Plugin is not loaded</strong><br/>
+        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo alias vel, perspiciatis perferendis minima sit, veritatis optio maxime aspernatur sint laborum eum illum ipsam expedita tempora unde deserunt iusto iste?</span>
       </IonContent>
     </IonPage>
   );

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonContent, IonHeader, IonPage, IonToolbar } from '@ionic/react';
+import { IonCol, IonContent, IonHeader, IonPage, IonRow, IonToolbar } from '@ionic/react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
@@ -25,19 +25,31 @@ const Events: React.FC = () => {
     const formattedDates = Array.isArray(date) ? date.map(d => d.toISOString().split('T')[0]) : [date.toISOString().split('T')[0]];
     return events.filter(event => formattedDates.includes(event.date));
   };
-
+  const formattedTitle = () => {
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const month = monthNames[selectedDate.getMonth()];
+    const year = selectedDate.getFullYear();
+    return `Events - ${month} ${year}`;
+  };
+  
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          Events - March 2024
+          <IonRow className="ion-align-items-center" style={{ fontSize: "1.4em" }}>
+            <IonCol size="2">
+            </IonCol>
+            <IonCol size="10">
+              {formattedTitle()}
+            </IonCol>
+          </IonRow>
         </IonToolbar>
       </IonHeader>
       <IonContent>
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
           <Calendar
             value={selectedDate as Date | RangeValue<Date>}
-            onChange={(date) => {
+            onChange={(date:any) => {
               setSelectedDate(date);
             }}
             tileContent={({ date, view }) => {
@@ -50,6 +62,7 @@ const Events: React.FC = () => {
             }}
           />
         </div>
+        
       </IonContent>
     </IonPage>
   );

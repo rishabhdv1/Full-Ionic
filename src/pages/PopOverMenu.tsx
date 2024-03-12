@@ -3,22 +3,17 @@ import { IonCol, IonContent, IonHeader, IonIcon, IonItem, IonList, IonPage, IonP
 import { caretDown, chevronDown } from 'ionicons/icons';
 
 const PopOverMenu: React.FC = () => {
-  const [showSearch, setShowSearch] = useState(false);
-
-  const toggleSearch = () => {
-    setShowSearch(!showSearch);
-  };
   const red = () => {
-    alert("You have selected option 'red'")
+    alert("You have selected option 'red' ")
   }
   const green = () => {
-    alert("You have selected option 'green'")
+    alert("You have selected option 'green' ")
   }
   const blue = () => {
-    alert("You have selected option 'blue'")
+    alert("You have selected option 'blue' ")
   }
   const white = () => {
-    alert("You have selected option 'white'")
+    alert("You have selected option 'white' ")
   }
 
   return (
@@ -35,7 +30,7 @@ const PopOverMenu: React.FC = () => {
               <IonIcon id="click-trigger" size="large" icon={chevronDown} />
             </IonCol>
             <IonPopover trigger="click-trigger" triggerAction="click">
-              <IonContent class="ion-padding">
+              <IonContent>
                 <IonList>
                   <IonItem>Select an option</IonItem>
                   <IonItem button onClick={red}>Red</IonItem>

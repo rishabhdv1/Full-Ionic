@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonCol, IonContent, IonHeader, IonPage, IonRow, IonToolbar } from '@ionic/react';
+import { IonButton, IonCol, IonContent, IonHeader, IonInput, IonItem, IonList, IonPage, IonRow, IonToolbar } from '@ionic/react';
 import { } from 'ionicons/icons';
 
 const Push: React.FC = () => {
@@ -17,13 +17,27 @@ const Push: React.FC = () => {
             <IonCol size="2">
             </IonCol>
             <IonCol size="10">
-              One/Two
+              Push
             </IonCol>
           </IonRow>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
-        
+      <IonContent className="ion-padding">
+        <IonList lines="none">
+          <IonItem button color="success">
+            <span style={{color:"#fff"}}>Register for Push</span>
+          </IonItem>
+          <IonItem>
+            <IonRow className="ion-align-items-center">
+              <IonCol size="10">
+                <IonInput placeholder="Message" fill="solid" />
+              </IonCol>
+              <IonCol size="2">
+                <IonButton color="tertiary">Send</IonButton>
+              </IonCol>
+            </IonRow>
+          </IonItem>
+        </IonList>
       </IonContent>
     </IonPage>
   );

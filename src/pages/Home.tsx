@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { IonCard, IonCol, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonPage, IonRow, IonToolbar } from '@ionic/react';
-import { call, cart, chatbox, image, imagesOutline, logoFacebook, mail, map, mapOutline, megaphone, star } from 'ionicons/icons';
+import { IonActionSheet, IonAlert, IonButton, IonCard, IonCol, IonContent, IonFooter, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonPage, IonRow, IonToast, IonToolbar } from '@ionic/react';
+import { call, cart, imagesOutline, logoFacebook, mail, mapOutline, megaphone, star, starOutline } from 'ionicons/icons';
 
-const Home: React.FC = () => {
+const Home: React.FC = ({ onChange }) => {
   const [showSearch, setShowSearch] = useState(false);
+  const [rating, setRating] = useState(0);
 
-  const toggleSearch = () => {
-    setShowSearch(!showSearch);
-  };
   const openGoogleMaps = () => {
     // Replace latitude and longitude with the desired location
     const latitude = 'latitude_value';
@@ -27,6 +25,28 @@ const Home: React.FC = () => {
     // Open Google Maps in a new tab
     window.open(googleMapsUrl, '_blank');
   };
+
+  const handleStarClick = (value:any)=>{
+    setRating(value);
+    onChange(value);
+  }
+  const renderStars =()=>{
+    let stars = [];
+    for (let i=1; i<=5; i++){
+      stars.push(
+        <>
+          <span> </span>
+          <IonIcon key={i} icon={i <= rating ? star : starOutline}
+          onClick={() =>
+          handleStarClick(i)}
+              style={{color:i <= rating ? "gold":"gray"}}
+          />
+        </>
+      );
+    }
+    return stars;
+  }
+
   return (
     <IonPage>
       <IonHeader>
@@ -84,14 +104,21 @@ const Home: React.FC = () => {
                 <IonIcon slot="start" icon={logoFacebook} />
                 <span>Visit us on Facebook</span>
               </IonItem>
-              <IonItem>
-                <IonIcon slot="start" icon={star} />
-                <span>Rate this App</span>
-              </IonItem>
             </IonList>
+            <IonItem id="open-alert">
+              <IonIcon slot="start" icon={star} />
+              <span>Rate this App</span>
+            </IonItem>
+            <IonRow className="ion-text-center">
+              <IonCol size="12">
+                <div style={{fontSize:"3em"}}>{renderStars()}</div>
+              </IonCol>
+            </IonRow>
           </IonCol>
         </IonRow>
       </IonContent>
+      <IonFooter>
+      </IonFooter>
     </IonPage>
   );
 };

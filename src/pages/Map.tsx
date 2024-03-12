@@ -5,16 +5,21 @@ const Map: React.FC = () => {
   const [map, setMap] = useState<google.maps.Map | null>(null);
 
   useEffect(() => {
-    // Load Google Maps script dynamically
-    const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY`;
-    script.onload = initializeMap;
-    document.body.appendChild(script);
+    // Check if the Google Maps API is already loaded
+    if (!window.google) {
+      // Load Google Maps script dynamically
+      const script = document.createElement('script');
+      script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY`;
+      script.onload = initializeMap;
+      document.body.appendChild(script);
 
-    return () => {
-      // Clean up - remove the script
-      document.body.removeChild(script);
-    };
+      return () => {
+        // Clean up - remove the script
+        document.body.removeChild(script);
+      };
+    } else {
+      initializeMap();
+    }
   }, []);
 
   const initializeMap = () => {

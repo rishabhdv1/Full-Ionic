@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonCol, IonContent, IonHeader, IonPage, IonRow, IonToolbar } from '@ionic/react';
+import { IonCol, IonContent, IonHeader, IonItem, IonList, IonPage, IonRow, IonToolbar } from '@ionic/react';
 import { } from 'ionicons/icons';
 
 const Instagram: React.FC = () => {
@@ -17,13 +17,17 @@ const Instagram: React.FC = () => {
             <IonCol size="2">
             </IonCol>
             <IonCol size="10">
-              One/Two
+              Instagram
             </IonCol>
           </IonRow>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
-        
+      <IonContent className="ion-padding">
+        <span>Login with your <strong>Instagram account.</strong></span><br/>
+        <span>The application will pull from <strong>Instagram </strong>and will display your <strong>recent posts.</strong></span>
+        <IonList>
+          <IonItem color="success" button>Login</IonItem>
+        </IonList>
       </IonContent>
     </IonPage>
   );

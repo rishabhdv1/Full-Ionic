@@ -19,7 +19,9 @@ const Restaurants: React.FC = () => {
             <IonCol size="8">
               Restaurant catalogue
             </IonCol>
-            <IonIcon icon={cart} />
+            <IonCol size="2">
+              <IonIcon size="large" icon={cart} />
+            </IonCol>
           </IonRow>
         </IonToolbar>
       </IonHeader>

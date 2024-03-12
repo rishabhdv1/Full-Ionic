@@ -21,7 +21,7 @@ return (
             <IonCol size="2">
             </IonCol>
             <IonCol size="10">
-              One/Two
+              Badge Tabs
             </IonCol>
           </IonRow>
         </IonToolbar>

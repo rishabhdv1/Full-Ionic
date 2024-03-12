@@ -58,6 +58,8 @@ import FeedBack from './pages/FeedBack';
 import Ad from './pages/Ad';
 import Push from './pages/Push';
 import Element from './pages/Elements';
+import RatingStars from './pages/FeedBack';
+import Delete from './pages/delete';
 
 setupIonicReact();
 
@@ -331,6 +333,9 @@ const App: React.FC = () => (
         <Route exact path="/localstorage">
           <LocalStorage />
         </Route>
+        <Route exact path="/delete">
+          <Delete />
+        </Route>
         <Route exact path="/sqlite">
           <SQLite />
         </Route>
@@ -395,7 +400,7 @@ const App: React.FC = () => (
           <Map />
         </Route>
         <Route exact path="/feedback">
-          <FeedBack />
+          <RatingStars />
         </Route>
         <Route exact path="/ad">
           <Ad />
