@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { IonContent, IonPage } from '@ionic/react';
+import { IonCol, IonContent, IonHeader, IonIcon, IonPage, IonRow, IonTitle } from '@ionic/react';
 import './TinderCards.css';
+import { refresh } from 'ionicons/icons';
 
 const Tinder: React.FC = () => {
   const [cards, setCards] = useState<string[]>([
@@ -9,6 +10,21 @@ const Tinder: React.FC = () => {
     'Card 3',
     'Card 4',
     'Card 5',
+    'Card 6',
+    'Card 7',
+    'Card 8',
+    'Card 9',
+    'Card 10',
+    'Card 11',
+    'Card 12',
+    'Card 13',
+    'Card 14',
+    'Card 15',
+    'Card 16',
+    'Card 17',
+    'Card 18',
+    'Card 19',
+    'Card 20',
   ]);
 
   const handleSwipe = (direction: 'left' | 'right') => {
@@ -17,13 +33,27 @@ const Tinder: React.FC = () => {
     // Remove the top card from the stack
     setCards((prevCards) => prevCards.slice(1));
   };
-
+  const onRefresh =()=>{
+    window.location.reload();
+  }
   return (
     <IonPage>
+      <IonHeader>
+        <IonRow className="ion-align-items-center">
+          <IonCol size="2"></IonCol>
+          <IonCol size="8">
+            <IonTitle>Swipeable Cards</IonTitle>
+          </IonCol>
+          <IonCol size="2">
+            <IonIcon size="large" icon={refresh} onClick={onRefresh} />
+          </IonCol>
+        </IonRow>
+      </IonHeader>
       <IonContent fullscreen>
         <div className="tinder-cards">
           {cards.map((card, index) => (
             <div
+            id="vCenter"
             key={index}
             className="tinder-card"
             onTouchStart={(e: React.TouchEvent) => {

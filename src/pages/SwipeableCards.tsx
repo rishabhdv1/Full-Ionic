@@ -1,62 +1,65 @@
 import React, { useRef, useState } from 'react';
-import { IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonCol, IonContent, IonHeader, IonPage, IonRow, IonToolbar } from '@ionic/react';
-import { } from 'ionicons/icons';
+import { IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonCol, IonContent, IonHeader, IonIcon, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
+import { refresh } from 'ionicons/icons';
 
 const SwipeableCards: React.FC = () => {
   const cardRef = useRef<HTMLIonCardElement>(null);
-  const [showSearch, setShowSearch] = useState(false);
-
-  const toggleSearch = () => {
-    setShowSearch(!showSearch);
-  };
-  const handleSwipe = (direction: string) => {
-    if (direction === 'left') {
-      // Handle swipe left action
-      console.log('Swiped left!');
-    } else if (direction === 'right') {
-      // Handle swipe right action
-      console.log('Swiped right!');
-    }
-  };
+  const [imageIndex, setImageIndex] = useState(0);
+  const [startY, setStartY] = useState<number | null>(null);
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    const touchStartX = e.touches[0].clientX;
-    const touchEndX = e.changedTouches[0].clientX;
-    const diffX = touchEndX - touchStartX;
+    setStartY(e.touches[0].clientY);
+  };
 
-    if (diffX > 0) {
-      handleSwipe('right');
-    } else if (diffX < 0) {
-      handleSwipe('left');
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (startY === null) return; // Return if startY is not set
+    const diffY = e.touches[0].clientY - startY;
+    if (Math.abs(diffY) > 2) { // Check if vertical swipe exceeds threshold
+      setImageIndex(prevIndex => prevIndex + (diffY > 0 ? -1 : 1)); // Increment or decrement image index based on swipe direction
+      setStartY(null); // Reset startY
     }
   };
 
+  // Array of images
+  const images = [
+    'https://ionicframework.com/docs/img/demos/card-media.png',
+    'https://ionicframework.com/docs/img/demos/card-media.png',
+    'https://ionicframework.com/docs/img/demos/card-media.png',
+  ];
+  const titles = [
+    'Title 1',
+    'Title 2',
+    'Title 3',
+  ];
+  const onRefresh =()=>{
+    window.location.reload();
+  }
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
-          <IonRow className="ion-align-items-center" style={{ fontSize: "1.4em" }}>
-            <IonCol size="2">
-            </IonCol>
-            <IonCol size="10">
-              One/Two
-            </IonCol>
-          </IonRow>
-        </IonToolbar>
+        <IonRow className="ion-align-items-center">
+          <IonCol size="2"></IonCol>
+          <IonCol size="8">
+            <IonTitle>Swipeable Cards</IonTitle>
+          </IonCol>
+          <IonCol size="2">
+            <IonIcon size="large" icon={refresh} onClick={onRefresh} />
+          </IonCol>
+        </IonRow>
       </IonHeader>
       <IonContent>
         <IonCard
+          id="vCenter"
           ref={cardRef}
           onTouchStart={handleTouchStart}
-          onTouchMove={(e) => e.preventDefault()} // Prevent scrolling while swiping
-          style={{ touchAction: 'pan-y' }} // Allow vertical scrolling
+          onTouchMove={handleTouchMove}
         >
-          <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
           <IonCardHeader>
-            <IonCardTitle>Swipeable Card</IonCardTitle>
+            <IonCardTitle>{titles[imageIndex]}</IonCardTitle>
           </IonCardHeader>
+          <img src={images[imageIndex]} alt="Swipeable Card" />
           <IonCardContent>
-            This is a swipeable card. Swipe left or right to trigger actions.
+            Swipe up or down to change images.
           </IonCardContent>
         </IonCard>
       </IonContent>
