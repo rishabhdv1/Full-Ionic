@@ -37,15 +37,17 @@ const SwipeableCards: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonRow className="ion-align-items-center">
-          <IonCol size="2"></IonCol>
-          <IonCol size="8">
-            <IonTitle>Swipeable Cards</IonTitle>
-          </IonCol>
-          <IonCol size="2">
-            <IonIcon size="large" icon={refresh} onClick={onRefresh} />
-          </IonCol>
-        </IonRow>
+        <IonToolbar>
+          <IonRow className="ion-align-items-center">
+            <IonCol size="2"></IonCol>
+            <IonCol size="8">
+              <IonTitle>Swipeable Cards</IonTitle>
+            </IonCol>
+            <IonCol size="2">
+              <IonIcon size="large" icon={refresh} onClick={onRefresh} />
+            </IonCol>
+          </IonRow>
+        </IonToolbar>
       </IonHeader>
       <IonContent>
         <IonCard id="vCenter" ref={cardRef} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} >

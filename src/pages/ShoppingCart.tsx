@@ -17,7 +17,7 @@ const ShoppingCart: React.FC = () => {
             <IonCol size="2">
             </IonCol>
             <IonCol size="10">
-              One/Two
+              Shopping Cart
             </IonCol>
           </IonRow>
         </IonToolbar>

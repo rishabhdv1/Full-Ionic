@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonCol, IonContent, IonHeader, IonIcon, IonPage, IonRow, IonTitle } from '@ionic/react';
+import { IonCol, IonContent, IonHeader, IonIcon, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import './TinderCards.css';
 import { refresh } from 'ionicons/icons';
 
@@ -39,15 +39,17 @@ const Tinder: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonRow className="ion-align-items-center">
-          <IonCol size="2"></IonCol>
-          <IonCol size="8">
-            <IonTitle>Swipeable Cards</IonTitle>
-          </IonCol>
-          <IonCol size="2">
-            <IonIcon size="large" icon={refresh} onClick={onRefresh} />
-          </IonCol>
-        </IonRow>
+        <IonToolbar>
+          <IonRow className="ion-align-items-center">
+            <IonCol size="2"></IonCol>
+            <IonCol size="8">
+              <IonTitle>Swipeable Cards</IonTitle>
+            </IonCol>
+            <IonCol size="2">
+              <IonIcon size="large" icon={refresh} onClick={onRefresh} />
+            </IonCol>
+          </IonRow>
+        </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <div className="tinder-cards">

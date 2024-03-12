@@ -57,7 +57,7 @@ const Charts: React.FC = () => {
             <IonCol size="2">
             </IonCol>
             <IonCol size="10">
-              One/Two
+              Charts
             </IonCol>
           </IonRow>
         </IonToolbar>

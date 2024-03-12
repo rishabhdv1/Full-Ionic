@@ -17,7 +17,7 @@ const Tumblr: React.FC = () => {
             <IonCol size="2">
             </IonCol>
             <IonCol size="10">
-              One/Two
+              Tumblr
             </IonCol>
           </IonRow>
         </IonToolbar>

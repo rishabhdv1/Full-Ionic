@@ -17,7 +17,7 @@ const BlogSpot: React.FC = () => {
             <IonCol size="2">
             </IonCol>
             <IonCol size="10">
-              One/Two
+              BlogSpot
             </IonCol>
           </IonRow>
         </IonToolbar>
