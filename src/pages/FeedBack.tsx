@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { IonButton, IonCol, IonContent, IonHeader, IonIcon, IonImg, IonItem, IonList, IonPage, IonTextarea, IonToolbar } from '@ionic/react';
+import { IonButton, IonCol, IonContent, IonHeader, IonIcon, IonImg, IonItem, IonList, IonPage, IonRow, IonTextarea, IonToolbar } from '@ionic/react';
 import { cameraOutline, close, folderOutline } from 'ionicons/icons';
 import { Camera } from '@capacitor/camera';
 import { CameraResultType } from '@capacitor/camera';
@@ -40,9 +40,13 @@ const FeedBack: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonCol size="8">
-            Leave feedback
-          </IonCol>
+          <IonRow>
+            <IonCol size="2"></IonCol>
+            <IonCol size="8">
+              Leave feedback
+            </IonCol>
+            <IonCol size="2"></IonCol>
+          </IonRow>
         </IonToolbar>
       </IonHeader>
       <IonContent>
