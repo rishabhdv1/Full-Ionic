@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { IonButton, IonCol, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonModal, IonPage, IonRow, IonTextarea, IonToolbar } from '@ionic/react';
+import { IonButton, IonCol, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonItemOption, IonItemOptions, IonItemSliding, IonLabel, IonList, IonModal, IonPage, IonRow, IonTextarea, IonToolbar } from '@ionic/react';
 import { add, close, trash } from 'ionicons/icons';
 
 const LocalStorage: React.FC = () => {
@@ -7,9 +7,6 @@ const LocalStorage: React.FC = () => {
   const [title, setTitle] = useState('');
   const [teaser, setTeaser] = useState('');
   const [entries, setEntries] = useState<{ title: string; teaser: string }[]>([]);
-  const [selectedEntries, setSelectedEntries] = useState<number[]>([]); // Array of indexes of selected entries
-  const [pressTimer, setPressTimer] = useState<any>(null); // Timer for long press
-  const [longPressing, setLongPressing] = useState(false); // Flag to indicate long pressing
 
   useEffect(() => {
     const storedEntries = localStorage.getItem('entries');
@@ -48,28 +45,12 @@ const LocalStorage: React.FC = () => {
   const toggleSearch = () => {
     setShowSearch(!showSearch);
   };
-  const handleMouseDown = (index: number) => {
-    const timer = setTimeout(() => {
-      setSelectedEntries([...selectedEntries, index]);
-      setLongPressing(true);
-    }, 1000); // Change 1000 to the desired duration for long press
-    setPressTimer(timer);
-  };
-
-  const handleMouseUp = () => {
-    clearTimeout(pressTimer);
-    if (longPressing) {
-      setLongPressing(false);
-    } else {
-      setSelectedEntries([]);
-    }
-  };
-
-  const handleDeleteSelected = () => {
-    // Implement delete functionality for selected entries
-    console.log('Deleting selected entries:', selectedEntries);
-    setSelectedEntries([]); // Clear selected entries after deletion
-  };
+  const handleDeleteEntry = (index: number) => {
+    const newEntries = [...entries];
+    newEntries.splice(index, 1);
+    setEntries(newEntries);
+    localStorage.setItem('entries', JSON.stringify(newEntries));
+  };  
 
   return (
     <IonPage>
@@ -79,12 +60,9 @@ const LocalStorage: React.FC = () => {
             <IonCol size="2"></IonCol>
             <IonCol size="8">Local Storage</IonCol>
             <IonCol size="2">
-              {selectedEntries.length > 0 && (
-                <IonIcon size="large" icon={trash} onClick={handleDeleteSelected} />
-              )}
-              {entries.length > 0 && (
-                <IonIcon size="large" icon={add} onClick={() => setShowSearch(true)} />
-              )}
+            {entries.length > 0 && (
+              <IonIcon size="large" icon={add} onClick={toggleSearch} />
+            )}
             </IonCol>
             {
               showSearch &&
@@ -124,13 +102,19 @@ const LocalStorage: React.FC = () => {
       <IonContent className="ion-padding">
         <IonList>
           {entries.map((entry, index) => (
-            <IonItem key={index} onMouseDown={() => handleMouseDown(index)} onMouseUp={handleMouseUp} className={selectedEntries.includes(index) ? 'selected' : ''}>
-              <span slot="start">{index+1}</span>
-              <IonLabel>
-                <h1>{entry.title}</h1>
-                <p>{entry.teaser}</p>
-              </IonLabel>
-            </IonItem>
+            <IonItemSliding key={index}>
+              <IonItem>
+                <IonLabel>
+                  <h1>{entry.title}</h1>
+                  <p>{entry.teaser}</p>
+                </IonLabel>
+              </IonItem>
+              <IonItemOptions side="end">
+                <IonItemOption color="danger" onClick={() => handleDeleteEntry(index)}>
+                  <IonIcon size="large" icon={trash} />
+                </IonItemOption>
+              </IonItemOptions>
+            </IonItemSliding>
           ))}
         </IonList>
         {entries.length === 0 && (
