@@ -104,6 +104,7 @@ const LocalStorage: React.FC = () => {
           {entries.map((entry, index) => (
             <IonItemSliding key={index}>
               <IonItem>
+                <div slot="start">{index+1}</div>
                 <IonLabel>
                   <h1>{entry.title}</h1>
                   <p>{entry.teaser}</p>
