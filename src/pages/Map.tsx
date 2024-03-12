@@ -1,12 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IonCol, IonContent, IonHeader, IonPage, IonRow, IonToolbar } from '@ionic/react';
-import { } from 'ionicons/icons';
 
 const Map: React.FC = () => {
-  const [showSearch, setShowSearch] = useState(false);
+  const [map, setMap] = useState<google.maps.Map | null>(null);
 
-  const toggleSearch = () => {
-    setShowSearch(!showSearch);
+  useEffect(() => {
+    // Load Google Maps script dynamically
+    const script = document.createElement('script');
+    script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY`;
+    script.onload = initializeMap;
+    document.body.appendChild(script);
+
+    return () => {
+      // Clean up - remove the script
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  const initializeMap = () => {
+    const mapElement = document.getElementById('map');
+    if (!mapElement) return;
+    
+    const mapOptions: google.maps.MapOptions = {
+      center: { lat: 0, lng: 0 },
+      zoom: 2,
+    };
+
+    const map = new google.maps.Map(mapElement, mapOptions);
+    setMap(map);
   };
 
   return (
@@ -17,13 +38,13 @@ const Map: React.FC = () => {
             <IonCol size="2">
             </IonCol>
             <IonCol size="10">
-              One/Two
+              Map
             </IonCol>
           </IonRow>
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        
+        <div id="map" style={{ height: '80vh' }}></div>
       </IonContent>
     </IonPage>
   );

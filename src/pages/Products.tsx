@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonCol, IonContent, IonHeader, IonIcon, IonPage, IonRow, IonToolbar } from '@ionic/react';
+import { IonButton, IonCol, IonContent, IonFooter, IonHeader, IonIcon, IonItem, IonList, IonPage, IonRow, IonToolbar } from '@ionic/react';
 import { cart } from 'ionicons/icons';
 
 const Products: React.FC = () => {
@@ -20,7 +20,7 @@ const Products: React.FC = () => {
               Products
             </IonCol>
             <IonCol size="2">
-              <IonIcon size="large" icon={cart} />
+              <IonIcon size="large" onClick={toggleSearch} icon={cart} />
             </IonCol>
           </IonRow>
         </IonToolbar>
@@ -28,6 +28,19 @@ const Products: React.FC = () => {
       <IonContent>
         
       </IonContent>
+      <IonFooter>
+        {
+          showSearch &&
+            <IonList lines="none">
+              <IonItem>
+                <span>Cart is empty</span>
+                <IonButton slot="end">
+                  <span style={{fontSize:"1.2em",padding:"10px"}}>Checkout</span>
+                </IonButton>
+              </IonItem>
+            </IonList>
+        }
+      </IonFooter>
     </IonPage>
   );
 };
