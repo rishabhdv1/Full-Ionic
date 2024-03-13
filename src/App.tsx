@@ -22,7 +22,7 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import ContentPage from './pages/ContentPage';
-import { archive, archiveOutline, arrowDown, bag, bagAddOutline, calendar, calendarClear, calendarClearOutline, card, cardOutline, cart, chatbox, checkbox, checkboxOutline, checkmark, cloud, folder, headset, home, images, logoDropbox, logoFacebook, logoFirebase, logoInstagram, logoTumblr, logoVimeo, logoWordpress, logoYoutube, map, mapOutline, newspaper, notifications, pieChart, pin, pricetag, pricetagOutline, pricetagsOutline, radioButtonOff, stopwatch, stopwatchOutline, swapHorizontal, timer, water, wifi } from 'ionicons/icons';
+import { archive, archiveOutline, arrowDown, bag, bagAddOutline, calendar, calendarClear, calendarClearOutline, card, cardOutline, cart, chatbox, checkbox, checkboxOutline, checkmark, cloud, folder, headset, help, home, images, logoDropbox, logoFacebook, logoFirebase, logoInstagram, logoTumblr, logoVimeo, logoWordpress, logoYoutube, map, mapOutline, newspaper, notifications, nutrition, pieChart, pin, pricetag, pricetagOutline, pricetagsOutline, radioButtonOff, stopwatch, stopwatchOutline, swapHorizontal, timer, water, wifi } from 'ionicons/icons';
 import BadgedTabs from './pages/BadgedTabs';
 import PlaceAutocomplete from './pages/PlaceAutocomplete';
 import StripePayments from './pages/StripePayments';
@@ -59,7 +59,7 @@ import Ad from './pages/Ad';
 import Push from './pages/Push';
 import Element from './pages/Elements';
 import RatingStars from './pages/FeedBack';
-import Delete from './pages/delete';
+import Delete from './pages/Delete';
 
 setupIonicReact();
 
@@ -106,7 +106,7 @@ const App: React.FC = () => (
           </IonMenuToggle>
           <IonMenuToggle>
             <IonItem routerLink="restaurant">
-              <IonIcon slot="start" icon={home} />
+              <IonIcon slot="start" icon={nutrition} />
               <span>Restaurant catalogue</span>
             </IonItem>
           </IonMenuToggle>
@@ -250,7 +250,7 @@ const App: React.FC = () => (
           </IonMenuToggle>
           <IonMenuToggle>
             <IonItem routerLink="blogspot">
-              <IonIcon slot="start" icon={home} />
+              <IonIcon slot="start" icon={help} />
               <span>BlogSpot</span>
             </IonItem>
           </IonMenuToggle>
@@ -300,80 +300,33 @@ const App: React.FC = () => (
         <Route exact path="/">
           <Redirect to="/home" />
         </Route>
-        <Route exact path="/contentpage/:custID">
-          <ContentPage />
+
+        <Route exact path="/ad">
+          <Ad />
         </Route>
         <Route exact path="/badgedtabs">
           <BadgedTabs />
         </Route>
-        <Route exact path="/placeauto">
-          <PlaceAutocomplete />
-        </Route>
-        <Route exact path="/stripe">
-          <StripePayments />
-        </Route>
-        <Route exact path="/news">
-          <News />
-        </Route>
-        <Route exact path="/restaurant">
-          <Restaurants />
-        </Route>
-        <Route exact path="/swipeablecards">
-          <SwipeableCards />
-        </Route>
-        <Route exact path="/tinder">
-          <Tinder />
-        </Route>
-        <Route exact path="/popovermenu">
-          <PopOverMenu />
-        </Route>
-        <Route exact path="/oauth">
-          <OAuth />
-        </Route>
-        <Route exact path="/localstorage">
-          <LocalStorage />
-        </Route>
-        <Route exact path="/delete">
-          <Delete />
-        </Route>
-        <Route exact path="/sqlite">
-          <SQLite />
-        </Route>
-        <Route exact path="/events">
-          <Events />
-        </Route>
-        <Route exact path="/wordpress">
-          <WordPress />
-        </Route>
-        <Route exact path="/drupal">
-          <Drupal />
-        </Route>
-        <Route exact path="/rssfeeds">
-          <RSSFeeds />
-        </Route>
-        <Route exact path="/products">
-          <Products />
-        </Route>
-        <Route exact path="/shoppingcart">
-          <ShoppingCart />
-        </Route>
-        <Route exact path="/galleries">
-          <Galleries />
-        </Route>
-        <Route exact path="/position">
-          <Position />
+        <Route exact path="/blogspot">
+          <BlogSpot />
         </Route>
         <Route exact path="/charts">
           <Charts />
         </Route>
-        <Route exact path="/radio">
-          <LiveRadio />
+        <Route exact path="/contentpage/:custID">
+          <ContentPage />
         </Route>
-        <Route exact path="/youtube">
-          <Youtube />
+        <Route exact path="/delete">
+          <Delete />
         </Route>
-        <Route exact path="/vimeo">
-          <Vimeo />
+        <Route exact path="/drupal">
+          <Drupal />
+        </Route>
+        <Route exact path="/elements">
+          <Element />
+        </Route>
+        <Route exact path="/events">
+          <Events />
         </Route>
         <Route exact path="/facebook">
           <Facebook />
@@ -381,35 +334,84 @@ const App: React.FC = () => (
         <Route exact path="/fbalbums">
           <FacebookAlbums />
         </Route>
-        <Route exact path="/instagram">
-          <Instagram />
-        </Route>
-        <Route exact path="/tumblr">
-          <Tumblr />
-        </Route>
-        <Route exact path="/flickr">
-          <Flickr />
-        </Route>
-        <Route exact path="/blogspot">
-          <BlogSpot />
+        <Route exact path="/feedback">
+          <RatingStars />
         </Route>
         <Route exact path="/firebase">
           <FireBase />
         </Route>
+        <Route exact path="/flickr">
+          <Flickr />
+        </Route>
+        <Route exact path="/galleries">
+          <Galleries />
+        </Route>
+        
+        <Route exact path="/instagram">
+          <Instagram />
+        </Route>
+        <Route exact path="/radio">
+          <LiveRadio />
+        </Route>
+        <Route exact path="/localstorage">
+          <LocalStorage />
+        </Route>
         <Route exact path="/map">
           <Map />
         </Route>
-        <Route exact path="/feedback">
-          <RatingStars />
+        <Route exact path="/news">
+          <News />
         </Route>
-        <Route exact path="/ad">
-          <Ad />
+        <Route exact path="/oauth">
+          <OAuth />
+        </Route>
+        <Route exact path="/placeauto">
+          <PlaceAutocomplete />
+        </Route>
+        <Route exact path="/popovermenu">
+          <PopOverMenu />
+        </Route>
+        <Route exact path="/position">
+          <Position />
+        </Route>
+        <Route exact path="/products">
+          <Products />
         </Route>
         <Route exact path="/push">
           <Push />
         </Route>
-        <Route exact path="/elements">
-          <Element />
+        <Route exact path="/restaurant">
+          <Restaurants />
+        </Route>
+        <Route exact path="/rssfeeds">
+          <RSSFeeds />
+        </Route>
+        <Route exact path="/shoppingcart">
+          <ShoppingCart />
+        </Route>
+        <Route exact path="/sqlite">
+          <SQLite />
+        </Route>
+        <Route exact path="/stripe">
+          <StripePayments />
+        </Route>
+        <Route exact path="/swipeablecards">
+          <SwipeableCards />
+        </Route>
+        <Route exact path="/tinder">
+          <Tinder />
+        </Route>
+        <Route exact path="/tumblr">
+          <Tumblr />
+        </Route>
+        <Route exact path="/vimeo">
+          <Vimeo />
+        </Route>
+        <Route exact path="/wordpress">
+          <WordPress />
+        </Route>
+        <Route exact path="/youtube">
+          <Youtube />
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>
