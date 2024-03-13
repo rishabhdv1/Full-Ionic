@@ -18,7 +18,7 @@ const Position: React.FC = () => {
             <IonCol size="2">
             </IonCol>
             <IonCol size="10">
-              Position
+              Current Position
             </IonCol>
           </IonRow>
         </IonToolbar>

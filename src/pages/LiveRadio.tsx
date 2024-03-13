@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
-import { IonCol, IonContent, IonHeader, IonPage, IonRow, IonToolbar } from '@ionic/react';
-import { } from 'ionicons/icons';
+import { IonButton, IonCol, IonContent, IonHeader, IonIcon, IonPage, IonRow, IonToolbar } from '@ionic/react';
+import { pause, play } from 'ionicons/icons';
 import Common from '../components/Common';
 
 const LiveRadio: React.FC = () => {
-  const [showSearch, setShowSearch] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
 
-  const toggleSearch = () => {
-    setShowSearch(!showSearch);
+  const togglePlayPause = () => {
+    setIsPlaying(!isPlaying);
+    if (!isPlaying) {
+      console.log("Play");
+    } else {
+      console.log("Pause");
+    }
   };
 
   return (
@@ -24,7 +29,9 @@ const LiveRadio: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <Common>
-        Radio
+        <div id="vCenter">
+          <IonIcon onClick={togglePlayPause} style={{ fontSize: "10em" }} icon={isPlaying ? pause : play} />
+        </div>
       </Common>
     </IonPage>
   );

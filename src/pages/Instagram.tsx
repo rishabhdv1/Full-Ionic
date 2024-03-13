@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonCol, IonContent, IonHeader, IonItem, IonList, IonPage, IonRow, IonToolbar } from '@ionic/react';
+import { IonButton, IonCol, IonContent, IonHeader, IonItem, IonList, IonPage, IonRow, IonToolbar } from '@ionic/react';
 import { } from 'ionicons/icons';
 import Common from '../components/Common';
 
@@ -27,9 +27,9 @@ const Instagram: React.FC = () => {
         <div className="ion-padding">
           <span>Login with your <strong>Instagram account.</strong></span><br/>
           <span>The application will pull from <strong>Instagram </strong>and will display your <strong>recent posts.</strong></span>
-          <IonList>
-            <IonItem color="success" button>Login</IonItem>
-          </IonList>
+          <IonButton className="ion-padding" expand="full" color="success">
+            <span style={{color:"#fff"}}>Login</span>
+          </IonButton>
         </div>
       </Common>
     </IonPage>
