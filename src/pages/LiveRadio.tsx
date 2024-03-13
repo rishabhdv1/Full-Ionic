@@ -30,7 +30,7 @@ const LiveRadio: React.FC = () => {
       </IonHeader>
       <Common>
         <div id="vCenter">
-          <IonIcon onClick={togglePlayPause} style={{ fontSize: "10em" }} icon={isPlaying ? pause : play} />
+          <IonIcon onClick={togglePlayPause} style={{ fontSize: "10em",color:"#ccc" }} icon={isPlaying ? pause : play} />
         </div>
       </Common>
     </IonPage>
