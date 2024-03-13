@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { IonCol, IonContent, IonHeader, IonPage, IonRow, IonToolbar } from '@ionic/react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import Common from '../components/Common';
 
 const Events: React.FC = () => {
   const [showSearch, setShowSearch] = useState(false);
@@ -45,7 +46,7 @@ const Events: React.FC = () => {
           </IonRow>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <Common>
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
           <Calendar
             value={selectedDate as Date | RangeValue<Date>}
@@ -63,7 +64,7 @@ const Events: React.FC = () => {
           />
         </div>
         
-      </IonContent>
+      </Common>
     </IonPage>
   );
 };

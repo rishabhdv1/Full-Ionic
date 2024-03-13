@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { IonCol, IonContent, IonHeader, IonPage, IonRow, IonToolbar, IonSearchbar, IonList, IonItem, IonLabel } from '@ionic/react';
+import Common from '../components/Common';
 
 const News: React.FC = () => {
   const [showSearch, setShowSearch] = useState(false);
@@ -35,7 +36,7 @@ const News: React.FC = () => {
           </IonRow>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <Common>
           <IonSearchbar
             value={searchText}
             onIonInput={e => setSearchText(e.detail.value!)}
@@ -52,7 +53,7 @@ const News: React.FC = () => {
             </IonItem>
           ))}
         </IonList>
-      </IonContent>
+      </Common>
     </IonPage>
   );
 };

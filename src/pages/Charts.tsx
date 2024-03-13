@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { IonCard, IonCardHeader, IonCardTitle, IonCol, IonContent, IonHeader, IonPage, IonRow, IonToolbar } from '@ionic/react';
 import Chart from 'react-google-charts';
+import Common from '../components/Common';
 
 const PieChart: React.FC<{ data: Array<[string, number]> }> = ({ data }) => {
   return (
@@ -62,7 +63,7 @@ const Charts: React.FC = () => {
           </IonRow>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <Common>
         <IonCard>
           <IonCardHeader>
             <IonCardTitle>
@@ -107,7 +108,7 @@ const Charts: React.FC = () => {
             rootProps={{ 'data-testid': '2' }}
           />
         </IonCard>
-      </IonContent>
+      </Common>
     </IonPage>
   );
 };

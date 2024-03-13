@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { IonCol, IonContent, IonHeader, IonInput, IonItem, IonList, IonPage, IonRow, IonToolbar } from '@ionic/react';
 import { } from 'ionicons/icons';
+import Common from '../components/Common';
 
 const PlaceAutocomplete: React.FC = () => {
   const [showSearch, setShowSearch] = useState(false);
@@ -22,14 +23,14 @@ const PlaceAutocomplete: React.FC = () => {
           </IonRow>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <Common>
         <IonList>
             <IonItem>
                 <IonInput placeholder="Change address" />
             </IonItem>
             <IonItem>Coords:</IonItem>
         </IonList>
-      </IonContent>
+      </Common>
     </IonPage>
   );
 };

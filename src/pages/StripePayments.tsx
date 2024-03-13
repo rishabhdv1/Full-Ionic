@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { IonButton, IonCol, IonContent, IonDatetime, IonHeader, IonInput, IonItem, IonLabel, IonList, IonPage, IonRow, IonSelect, IonSelectOption, IonToolbar } from '@ionic/react';
 import { } from 'ionicons/icons';
+import Common from '../components/Common';
 
 const StripePayments: React.FC = () => {
     const [selectedDate, setSelectedDate] = useState<string>('');
@@ -23,7 +24,7 @@ return (
           </IonRow>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <Common>
         <IonList>
             <IonItem>
               <IonSelect label="Fixed label" labelPlacement="fixed" placeholder="Card Type">
@@ -56,7 +57,7 @@ return (
               <span style={{fontSize:"2em"}}>MAKE PAYMENT</span>
             </IonButton>
         </IonList>
-      </IonContent>
+      </Common>
     </IonPage>
   );
 };

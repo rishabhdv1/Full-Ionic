@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { IonActionSheet, IonAlert, IonButton, IonCard, IonCol, IonContent, IonFooter, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonPage, IonRow, IonToast, IonToolbar } from '@ionic/react';
 import { call, cart, imagesOutline, logoFacebook, mail, mapOutline, megaphone, star, starOutline } from 'ionicons/icons';
+import Common from '../components/Common';
 
 const Home: React.FC = ({ onChange }) => {
   const [showSearch, setShowSearch] = useState(false);
@@ -60,7 +61,7 @@ const Home: React.FC = ({ onChange }) => {
           </IonRow>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <Common>
         <IonRow className="ion-text-center ion-align-items-center">
           <IonCol size="6">
             <IonCard className="ion-padding" routerLink="/news">
@@ -116,7 +117,7 @@ const Home: React.FC = ({ onChange }) => {
             </IonRow>
           </IonCol>
         </IonRow>
-      </IonContent>
+      </Common>
       <IonFooter>
       </IonFooter>
     </IonPage>

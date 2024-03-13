@@ -3,6 +3,7 @@ import { IonButton, IonCol, IonContent, IonHeader, IonIcon, IonImg, IonItem, Ion
 import { cameraOutline, close, folderOutline } from 'ionicons/icons';
 import { Camera } from '@capacitor/camera';
 import { CameraResultType } from '@capacitor/camera';
+import Common from '../components/Common';
 
 
 const FeedBack: React.FC = () => {
@@ -49,7 +50,7 @@ const FeedBack: React.FC = () => {
           </IonRow>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <Common>
         <IonTextarea placeholder="Message" rows={10}/>
         <IonList>
           <IonButton color="" expand="full" className="ion-padding" onClick={handleCameraButtonClick}>
@@ -76,7 +77,7 @@ const FeedBack: React.FC = () => {
             </IonButton>
           </IonItem>
         }
-      </IonContent>
+      </Common>
     </IonPage>
   );
 };

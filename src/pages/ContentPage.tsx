@@ -1,5 +1,6 @@
 import { IonCol, IonContent, IonHeader, IonPage, IonRow, IonToolbar } from '@ionic/react';
 import React, { } from 'react';
+import Common from '../components/Common';
 
 const ContentPage: React.FC = () => {
   
@@ -18,9 +19,11 @@ const ContentPage: React.FC = () => {
           </IonRow>
         </IonToolbar>
       </IonHeader>
-      <IonContent className="ion-padding">
-        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, cumque a. Eius asperiores praesentium, vero aliquam iure facere odit placeat nihil laborum similique animi saepe quis nisi quaerat nam? Est!</span>
-      </IonContent>
+      <Common>
+        <div className="ion-padding">
+          <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, cumque a. Eius asperiores praesentium, vero aliquam iure facere odit placeat nihil laborum similique animi saepe quis nisi quaerat nam? Est!</span>
+        </div>
+      </Common>
     </IonPage>
   );
 };

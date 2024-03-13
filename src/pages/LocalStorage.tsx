@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { IonButton, IonCol, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonItemOption, IonItemOptions, IonItemSliding, IonLabel, IonList, IonModal, IonPage, IonRow, IonTextarea, IonToolbar } from '@ionic/react';
 import { add, close, trash } from 'ionicons/icons';
+import Common from '../components/Common';
 
 const LocalStorage: React.FC = () => {
   const [showSearch, setShowSearch] = useState(false);
@@ -99,46 +100,48 @@ const LocalStorage: React.FC = () => {
           </IonRow>
         </IonToolbar>
       </IonHeader>
-      <IonContent className="ion-padding">
-        <IonList>
-          {entries.map((entry, index) => (
-            <IonItemSliding key={index}>
-              <IonItem>
-                <div slot="start">{index+1}</div>
-                <IonLabel>
-                  <h1>{entry.title}</h1>
-                  <p>{entry.teaser}</p>
-                </IonLabel>
-              </IonItem>
-              <IonItemOptions side="end">
-                <IonItemOption color="danger" onClick={() => handleDeleteEntry(index)}>
-                  <IonIcon size="large" icon={trash} />
-                </IonItemOption>
-              </IonItemOptions>
-            </IonItemSliding>
-          ))}
-        </IonList>
-        {entries.length === 0 && (
-          <div>
-            <IonInput
-              placeholder="Title"
-              fill="outline"
-              value={title}
-              onIonChange={(e) => setTitle(e.detail.value!)}
-            />
-            <IonTextarea
-              placeholder="Teaser"
-              fill="outline"
-              autoGrow={true}
-              value={teaser}
-              onIonChange={(e) => setTeaser(e.detail.value!)}
-            />
-            <IonButton color="success" expand="block" className="ion-margin-top" onClick={handleSave}>
-              <span style={{fontSize:"1.4em",padding:"5px",color:"#fff"}}>Save</span>
-            </IonButton>
-          </div>
-        )}
-      </IonContent>
+      <Common>
+        <div className="ion-padding">
+          <IonList>
+            {entries.map((entry, index) => (
+              <IonItemSliding key={index}>
+                <IonItem>
+                  <div slot="start">{index+1}</div>
+                  <IonLabel>
+                    <h1>{entry.title}</h1>
+                    <p>{entry.teaser}</p>
+                  </IonLabel>
+                </IonItem>
+                <IonItemOptions side="end">
+                  <IonItemOption color="danger" onClick={() => handleDeleteEntry(index)}>
+                    <IonIcon size="large" icon={trash} />
+                  </IonItemOption>
+                </IonItemOptions>
+              </IonItemSliding>
+            ))}
+          </IonList>
+          {entries.length === 0 && (
+            <div>
+              <IonInput
+                placeholder="Title"
+                fill="outline"
+                value={title}
+                onIonChange={(e) => setTitle(e.detail.value!)}
+              />
+              <IonTextarea
+                placeholder="Teaser"
+                fill="outline"
+                autoGrow={true}
+                value={teaser}
+                onIonChange={(e) => setTeaser(e.detail.value!)}
+              />
+              <IonButton color="success" expand="block" className="ion-margin-top" onClick={handleSave}>
+                <span style={{fontSize:"1.4em",padding:"5px",color:"#fff"}}>Save</span>
+              </IonButton>
+            </div>
+          )}
+        </div>
+      </Common>
     </IonPage>
   );
 };

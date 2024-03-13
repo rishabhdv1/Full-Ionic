@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { IonCol, IonContent, IonHeader, IonIcon, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import './TinderCards.css';
 import { refresh } from 'ionicons/icons';
+import Common from '../components/Common';
 
 const Tinder: React.FC = () => {
   const [cards, setCards] = useState<string[]>([
@@ -51,7 +52,7 @@ const Tinder: React.FC = () => {
           </IonRow>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
+      <Common>
         <div className="tinder-cards">
           {cards.map((card, index) => (
             <div
@@ -79,7 +80,7 @@ const Tinder: React.FC = () => {
           </div>
           ))}
         </div>
-      </IonContent>
+      </Common>
     </IonPage>
   );
 };

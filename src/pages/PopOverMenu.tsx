@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { IonCol, IonContent, IonHeader, IonIcon, IonItem, IonList, IonPage, IonPopover, IonRow, IonToolbar } from '@ionic/react';
 import { caretDown, chevronDown } from 'ionicons/icons';
+import Common from '../components/Common';
 
 const PopOverMenu: React.FC = () => {
   const red = () => {
@@ -30,7 +31,7 @@ const PopOverMenu: React.FC = () => {
               <IonIcon id="click-trigger" size="large" icon={chevronDown} />
             </IonCol>
             <IonPopover trigger="click-trigger" triggerAction="click">
-              <IonContent>
+              <Common>
                 <IonList>
                   <IonItem>Select an option</IonItem>
                   <IonItem button onClick={red}>Red</IonItem>
@@ -38,7 +39,7 @@ const PopOverMenu: React.FC = () => {
                   <IonItem button onClick={blue}>Blue</IonItem>
                   <IonItem button onClick={white}>White</IonItem>
                 </IonList>
-              </IonContent>
+              </Common>
             </IonPopover>
           </IonRow>
         </IonToolbar>

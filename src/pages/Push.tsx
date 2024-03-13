@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { IonButton, IonCol, IonContent, IonHeader, IonInput, IonItem, IonList, IonPage, IonRow, IonToolbar } from '@ionic/react';
 import { } from 'ionicons/icons';
+import Common from '../components/Common';
 
 const Push: React.FC = () => {
   const [showSearch, setShowSearch] = useState(false);
@@ -22,23 +23,25 @@ const Push: React.FC = () => {
           </IonRow>
         </IonToolbar>
       </IonHeader>
-      <IonContent className="ion-padding">
-        <IonList lines="none">
-          <IonItem button color="success">
-            <span style={{color:"#fff"}}>Register for Push</span>
-          </IonItem>
-          <IonItem>
-            <IonRow className="ion-align-items-center">
-              <IonCol size="10">
-                <IonInput placeholder="Message" fill="solid" />
-              </IonCol>
-              <IonCol size="2">
-                <IonButton color="tertiary">Send</IonButton>
-              </IonCol>
-            </IonRow>
-          </IonItem>
-        </IonList>
-      </IonContent>
+      <Common>
+        <div className="ion-padding">
+          <IonList lines="none">
+            <IonItem button color="success">
+              <span style={{color:"#fff"}}>Register for Push</span>
+            </IonItem>
+            <IonItem>
+              <IonRow className="ion-align-items-center">
+                <IonCol size="10">
+                  <IonInput placeholder="Message" fill="solid" />
+                </IonCol>
+                <IonCol size="2">
+                  <IonButton color="tertiary">Send</IonButton>
+                </IonCol>
+              </IonRow>
+            </IonItem>
+          </IonList>
+        </div>
+      </Common>
     </IonPage>
   );
 };

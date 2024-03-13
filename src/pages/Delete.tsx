@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { IonInput, IonIcon, IonContent, IonFooter, IonToolbar, IonList, IonItem, IonPage, IonLabel, IonItemSliding, IonItemOptions, IonItemOption, IonModal, IonHeader, IonButtons, IonButton, IonTitle, IonSearchbar, IonRow, IonCol, IonTextarea } from '@ionic/react';
 import { addCircle, archiveOutline, closeCircle, send } from 'ionicons/icons';
 import { add } from 'lodash';
+import Common from '../components/Common';
 
 const Delete: React.FC = () => {
   const [message, setMessage] = useState<string>('');
@@ -78,68 +79,70 @@ const Delete: React.FC = () => {
           </IonRow>
         </IonToolbar>
       </IonHeader>
-      <IonContent className="ion-padding">
-        <IonList>
-          <IonInput value={message} onIonInput={handleInputChange} fill="outline" placeholder="Type your message"></IonInput>
-          <IonButton color="success" expand="block" className="ion-margin-top" onClick={submit}>
-            <span style={{fontSize:"1.4em",padding:"5px",color:"#fff"}}>Save</span>
-          </IonButton>
-        </IonList>
-        {/* <IonSearchbar value={searchFilter} onIonInput={(e:any) => setSearchFilter(e.detail.value) } /> */}
-        <IonList>
-        {
-              showSearch &&
-              <IonModal isOpen={showSearch} onDidDismiss={() => setShowSearch(false)}>
-                <IonHeader>
-                <IonRow className="ion-align-items-center" style={{ fontSize: "1.4em" }}>
-                  <IonCol size="2"></IonCol>
-                  <IonCol size="8">Add New Entry</IonCol>
-                  <IonCol size="2">
-                    <IonIcon size="large" onClick={() => setShowSearch(false)} icon={closeCircle} />
-                  </IonCol>
-                </IonRow>
-                </IonHeader>
-                <IonContent className="ion-padding">
-                  <IonInput
-                    label="Title"
-                    fill="outline"
-                    value={'title'}
-                    // onIonChange={(e) => setTitle(e.detail.value!)}
-                  />
-                  <IonTextarea
-                    label="Teaser"
-                    fill="outline"
-                    autoGrow={true}
-                    value={'teaser'}
-                    // onIonChange={(e) => setTeaser(e.detail.value!)}
-                  />
-                  <IonButton color="success" expand="block" className="ion-margin-top" onClick={handleSave}>
-                    <span style={{fontSize:"1.4em",padding:"5px",color:"#fff"}}>Save</span>
-                  </IonButton>
-                </IonContent>
-              </IonModal>
-            }
-          {filteredEntries.map((entry, index) => ( /* entries */
-            <IonItemSliding key={index}>
-              <IonItemOptions side="start">
-                <IonItemOption color="success" onClick={() => archiveEntry(entry, index)}>Archive</IonItemOption>
-              </IonItemOptions>
+      <Common>
+        <div className="ion-padding">
+          <IonList>
+            <IonInput value={message} onIonInput={handleInputChange} fill="outline" placeholder="Type your message"></IonInput>
+            <IonButton color="success" expand="block" className="ion-margin-top" onClick={submit}>
+              <span style={{fontSize:"1.4em",padding:"5px",color:"#fff"}}>Save</span>
+            </IonButton>
+          </IonList>
+          {/* <IonSearchbar value={searchFilter} onIonInput={(e:any) => setSearchFilter(e.detail.value) } /> */}
+          <IonList>
+          {
+                showSearch &&
+                <IonModal isOpen={showSearch} onDidDismiss={() => setShowSearch(false)}>
+                  <IonHeader>
+                  <IonRow className="ion-align-items-center" style={{ fontSize: "1.4em" }}>
+                    <IonCol size="2"></IonCol>
+                    <IonCol size="8">Add New Entry</IonCol>
+                    <IonCol size="2">
+                      <IonIcon size="large" onClick={() => setShowSearch(false)} icon={closeCircle} />
+                    </IonCol>
+                  </IonRow>
+                  </IonHeader>
+                  <IonContent className="ion-padding">
+                    <IonInput
+                      label="Title"
+                      fill="outline"
+                      value={'title'}
+                      // onIonChange={(e) => setTitle(e.detail.value!)}
+                    />
+                    <IonTextarea
+                      label="Teaser"
+                      fill="outline"
+                      autoGrow={true}
+                      value={'teaser'}
+                      // onIonChange={(e) => setTeaser(e.detail.value!)}
+                    />
+                    <IonButton color="success" expand="block" className="ion-margin-top" onClick={handleSave}>
+                      <span style={{fontSize:"1.4em",padding:"5px",color:"#fff"}}>Save</span>
+                    </IonButton>
+                  </IonContent>
+                </IonModal>
+              }
+            {filteredEntries.map((entry, index) => ( /* entries */
+              <IonItemSliding key={index}>
+                <IonItemOptions side="start">
+                  <IonItemOption color="success" onClick={() => archiveEntry(entry, index)}>Archive</IonItemOption>
+                </IonItemOptions>
 
-              <IonItem>
-                  <span slot="start">{index+1}</span>
-                  <IonLabel>
-                    <span>{entry}</span><br/>
-                    <span>{archivedEntries}</span>
-                  </IonLabel>
-              </IonItem>
+                <IonItem>
+                    <span slot="start">{index+1}</span>
+                    <IonLabel>
+                      <span>{entry}</span><br/>
+                      <span>{archivedEntries}</span>
+                    </IonLabel>
+                </IonItem>
 
-              <IonItemOptions side="end">
-                <IonItemOption onClick={() => deleteEntry(index)} color="danger">Delete</IonItemOption>
-              </IonItemOptions>
-            </IonItemSliding>
-          ))}
-        </IonList>
-      </IonContent>
+                <IonItemOptions side="end">
+                  <IonItemOption onClick={() => deleteEntry(index)} color="danger">Delete</IonItemOption>
+                </IonItemOptions>
+              </IonItemSliding>
+            ))}
+          </IonList>
+        </div>
+      </Common>
     </IonPage>
   );
 };

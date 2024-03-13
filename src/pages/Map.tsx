@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { IonCol, IonContent, IonHeader, IonPage, IonRow, IonToolbar } from '@ionic/react';
+import Common from '../components/Common';
 
 const Map: React.FC = () => {
   const [map, setMap] = useState<google.maps.Map | null>(null);
@@ -48,9 +49,9 @@ const Map: React.FC = () => {
           </IonRow>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <Common>
         <div id="map" style={{ height: '80vh' }}></div>
-      </IonContent>
+      </Common>
     </IonPage>
   );
 };

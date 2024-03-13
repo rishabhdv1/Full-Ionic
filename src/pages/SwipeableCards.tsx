@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonCol, IonContent, IonHeader, IonIcon, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import { refresh } from 'ionicons/icons';
+import Common from '../components/Common';
 
 const SwipeableCards: React.FC = () => {
   const cardRef = useRef<HTMLIonCardElement>(null);
@@ -49,7 +50,7 @@ const SwipeableCards: React.FC = () => {
           </IonRow>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <Common>
         <IonCard id="vCenter" ref={cardRef} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} >
           <IonCardHeader>
             <IonCardTitle>{titles[imageIndex]}</IonCardTitle>
@@ -59,7 +60,7 @@ const SwipeableCards: React.FC = () => {
             Swipe up or down to change images.
           </IonCardContent>
         </IonCard>
-      </IonContent>
+      </Common>
     </IonPage>
   );
 };

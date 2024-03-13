@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { IonButton, IonCol, IonContent, IonFooter, IonHeader, IonIcon, IonItem, IonList, IonPage, IonRow, IonToolbar } from '@ionic/react';
 import { cart } from 'ionicons/icons';
+import Common from '../components/Common';
 
 const Products: React.FC = () => {
   const [showSearch, setShowSearch] = useState(false);
@@ -25,9 +26,9 @@ const Products: React.FC = () => {
           </IonRow>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
-        
-      </IonContent>
+      <Common>
+        asd
+      </Common>
       <IonFooter>
         {
           showSearch &&

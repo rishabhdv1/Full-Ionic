@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { IonCol, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonPage, IonRow, IonToolbar } from '@ionic/react';
 import { logoFacebook, logoGoogle, logoTwitter } from 'ionicons/icons';
+import Common from '../components/Common';
 
 const OAuth: React.FC = () => {
   const [showSearch, setShowSearch] = useState(false);
@@ -22,23 +23,25 @@ const OAuth: React.FC = () => {
           </IonRow>
         </IonToolbar>
       </IonHeader>
-      <IonContent className="ion-padding">
-        <IonLabel>Please Login by using one of the following providers</IonLabel>
-        <IonList>
-          <IonItem button>
-            <IonIcon slot="start" icon={logoTwitter} />
-            <span>Twitter</span>
-          </IonItem>
-          <IonItem button>
-            <IonIcon slot="start" icon={logoFacebook} />
-            <span>Facebook</span>
-          </IonItem>
-          <IonItem button>
-            <IonIcon slot="start" icon={logoGoogle} />
-            <span>Google</span>
-          </IonItem>
-        </IonList>
-      </IonContent>
+      <Common>
+        <div className="ion-padding">
+          <IonLabel>Please Login by using one of the following providers</IonLabel>
+          <IonList>
+            <IonItem button>
+              <IonIcon slot="start" icon={logoTwitter} />
+              <span>Twitter</span>
+            </IonItem>
+            <IonItem button>
+              <IonIcon slot="start" icon={logoFacebook} />
+              <span>Facebook</span>
+            </IonItem>
+            <IonItem button>
+              <IonIcon slot="start" icon={logoGoogle} />
+              <span>Google</span>
+            </IonItem>
+          </IonList>
+        </div>
+      </Common>
     </IonPage>
   );
 };

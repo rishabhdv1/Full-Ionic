@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { IonCol, IonContent, IonHeader, IonIcon, IonPage, IonRow, IonToolbar } from '@ionic/react';
 import { cart } from 'ionicons/icons';
+import Common from '../components/Common';
 
 const Restaurants: React.FC = () => {
   const [showSearch, setShowSearch] = useState(false);
@@ -25,9 +26,9 @@ const Restaurants: React.FC = () => {
           </IonRow>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
-        
-      </IonContent>
+      <Common>
+        asd
+      </Common>
     </IonPage>
   );
 };

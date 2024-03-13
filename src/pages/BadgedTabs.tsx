@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { IonCol, IonContent, IonHeader, IonIcon, IonPage, IonRow, IonSegment, IonSegmentButton, IonToolbar } from '@ionic/react';
 import { home, mapOutline } from 'ionicons/icons';
+import Common from '../components/Common';
 
 const BadgedTabs: React.FC = () => {
     const [selectedSegment, setSelectedSegment] = useState('Online');
@@ -36,7 +37,7 @@ return (
           <span>Map</span>
         </IonSegmentButton>
       </IonSegment>
-      <IonContent>
+      <Common>
         {selectedSegment === 'Online' && (
           <>
             <span style={{fontSize:"2em"}}>Tab 1</span>
@@ -48,7 +49,7 @@ return (
             <span style={{fontSize:"2em"}}>Tab 2</span>
           </>
         )}
-      </IonContent>
+      </Common>
     </IonPage>
   );
 };

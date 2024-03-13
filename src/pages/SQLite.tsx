@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { IonCol, IonContent, IonHeader, IonPage, IonRow, IonToolbar } from '@ionic/react';
 import { } from 'ionicons/icons';
+import Common from '../components/Common';
 
 const SQLite: React.FC = () => {
   const [showSearch, setShowSearch] = useState(false);
@@ -22,9 +23,9 @@ const SQLite: React.FC = () => {
           </IonRow>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <Common>
         
-      </IonContent>
+      </Common>
     </IonPage>
   );
 };

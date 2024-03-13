@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { IonCol, IonContent, IonHeader, IonItem, IonItemDivider, IonItemGroup, IonItemOption, IonItemOptions, IonItemSliding, IonLabel, IonList, IonPage, IonRow, IonToolbar } from '@ionic/react';
 import { } from 'ionicons/icons';
+import Common from '../components/Common';
 
 const Element: React.FC = () => {
   const [showSearch, setShowSearch] = useState(false);
@@ -22,7 +23,7 @@ const Element: React.FC = () => {
           </IonRow>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <Common>
         <IonItemGroup>
           <IonItemDivider>
             <IonLabel>Forms</IonLabel>
@@ -93,7 +94,7 @@ const Element: React.FC = () => {
           </IonItem>
         </IonItemGroup>
 
-      </IonContent>
+      </Common>
     </IonPage>
   );
 };
