@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonCard, IonCardHeader, IonCardTitle, IonCol, IonContent, IonHeader, IonPage, IonRow, IonToolbar } from '@ionic/react';
+import { IonCard, IonCardHeader, IonCardTitle, IonCol, IonContent, IonFooter, IonHeader, IonLabel, IonPage, IonRow, IonTabBar, IonTabButton, IonToolbar } from '@ionic/react';
 import Chart from 'react-google-charts';
 import Common from '../components/Common';
 
@@ -109,6 +109,30 @@ const Charts: React.FC = () => {
           />
         </IonCard>
       </Common>
+      <IonFooter>
+        <IonTabBar>
+          <IonTabButton style={{fontSize:"1.2em"}} tab="tab1" href="/localstorage">
+            <IonLabel>
+              <span>LocalStorage</span>
+            </IonLabel>
+          </IonTabButton>
+          <IonTabButton style={{fontSize:"1.2em"}} tab="tab2" href="/swipeablecards">
+            <IonLabel>
+              <span>Swipeable Cards</span>
+            </IonLabel>
+          </IonTabButton>
+          <IonTabButton style={{fontSize:"1.2em"}} tab="tab3" href="/tinder">
+            <IonLabel>
+              <span>Tinder Cards</span>
+            </IonLabel>
+          </IonTabButton>
+          <IonTabButton style={{fontSize:"1.2em"}} tab="tab4" href="/charts">
+            <IonLabel>
+              <span>Charts</span>
+            </IonLabel>
+          </IonTabButton>
+        </IonTabBar>
+      </IonFooter>
     </IonPage>
   );
 };

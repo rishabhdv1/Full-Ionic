@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonCol, IonContent, IonHeader, IonIcon, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
+import { IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonCol, IonContent, IonFooter, IonHeader, IonIcon, IonLabel, IonPage, IonRow, IonTabBar, IonTabButton, IonTitle, IonToolbar } from '@ionic/react';
 import { refresh } from 'ionicons/icons';
 import Common from '../components/Common';
 
@@ -61,6 +61,30 @@ const SwipeableCards: React.FC = () => {
           </IonCardContent>
         </IonCard>
       </Common>
+      <IonFooter>
+        <IonTabBar>
+          <IonTabButton style={{fontSize:"1.2em"}} tab="tab1" href="/localstorage">
+            <IonLabel>
+              <span>LocalStorage</span>
+            </IonLabel>
+          </IonTabButton>
+          <IonTabButton style={{fontSize:"1.2em"}} tab="tab2" href="/swipeablecards">
+            <IonLabel>
+              <span>Swipeable Cards</span>
+            </IonLabel>
+          </IonTabButton>
+          <IonTabButton style={{fontSize:"1.2em"}} tab="tab3" href="/tinder">
+            <IonLabel>
+              <span>Tinder Cards</span>
+            </IonLabel>
+          </IonTabButton>
+          <IonTabButton style={{fontSize:"1.2em"}} tab="tab4" href="/charts">
+            <IonLabel>
+              <span>Charts</span>
+            </IonLabel>
+          </IonTabButton>
+        </IonTabBar>
+      </IonFooter>
     </IonPage>
   );
 };

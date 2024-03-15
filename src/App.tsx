@@ -1,5 +1,5 @@
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonContent, IonHeader, IonIcon, IonItem, IonList, IonMenu, IonMenuButton, IonMenuToggle, IonRouterOutlet, IonTitle, IonToolbar, setupIonicReact } from '@ionic/react';
+import { IonApp, IonContent, IonHeader, IonIcon, IonItem, IonList, IonMenu, IonMenuButton, IonMenuToggle, IonRouterOutlet, IonTabs, IonTitle, IonToolbar, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
 
@@ -413,6 +413,23 @@ const App: React.FC = () => (
         <Route exact path="/youtube">
           <Youtube />
         </Route>
+
+        <IonTabs>
+          <IonRouterOutlet>
+            <Route exact path="/news">
+              <News />
+            </Route>
+            <Route exact path="/products">
+              <Products />
+            </Route>
+            <Route exact path="/galleries">
+              <Galleries />
+            </Route>
+            <Route exact path="/map">
+              <Map />
+            </Route>
+          </IonRouterOutlet>
+        </IonTabs>
       </IonRouterOutlet>
     </IonReactRouter>
     <IonMenuButton style={{fontSize:"2em"}} />

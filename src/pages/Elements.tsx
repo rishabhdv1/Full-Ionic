@@ -1,98 +1,105 @@
 import React, { useState } from 'react';
-import { IonCol, IonContent, IonHeader, IonItem, IonItemDivider, IonItemGroup, IonItemOption, IonItemOptions, IonItemSliding, IonLabel, IonList, IonPage, IonRow, IonToolbar } from '@ionic/react';
-import { } from 'ionicons/icons';
+import { IonCol, IonHeader, IonIcon, IonMenuButton, IonPage, IonRow, IonSearchbar, IonSelect, IonSelectOption, IonToolbar } from '@ionic/react';
+import { personCircle } from 'ionicons/icons';
 import Common from '../components/Common';
 
 const Element: React.FC = () => {
-  const [showSearch, setShowSearch] = useState(false);
+  const [searchText, setSearchText] = useState('');
+  const [selectedState, setSelectedState] = useState<string>('All');
+  const [selectedCity, setSelectedCity] = useState<string>('All');
 
-  const toggleSearch = () => {
-    setShowSearch(!showSearch);
+  const stateCities: { [key: string]: string[] } = {
+    "Andhra Pradesh": ["City1", "City2", "City3"],
+    "Madhya Pradesh": ["City4", "City5", "City6"],
+    // Add more states and their cities here...
+    "Arunachal Pradesh": ["Arunachal Pradesh"],
+    "assam": ["Assam"],
+    "bihar": ["Bihar"],
+    "chattisgarh": ["Chattisgarh"],
+    "goa": ["Goa"],
+    "gujarat": ["Gujarat"],
+    "haryana": ["Haryana"],
+    "himachalpradesh": ["Himachalpradesh"],
+    "jharkhand": ["Jharkhand"],
+    "karnataka": ["Karnataka"],
+    "kerala": ["Kerala"],
+    "madhyapradesh": ["AGAR-MALWA","ALIRAJPUR","ANUPPUR","ASHOKNAGAR","BALAGHAT","BARWANI","BETUL",'BHIND','BHOPAL','BURHANPUR','CHHATARPUR','CHHINDWARA','DAMOH','DATIA','DEWAS','DHAR','DINDORI','GUNA','GWALIOR','HARDA','INDORE','JABALPUR','JHABUA','KATNI','KHANDWA','KHARGONE','MANDLA','MANDSAUR','MAUGANJ','MORENA','NARMADAPURAM','NARSINGHPUR','NEEMUCH','NIWARI','PANNA','RAISEN','RAJGARH','RATLAM','REWA','SAGAR','SATNA','SEHORE','SEONI','SHAHDOL','SHAJAPUR','SHEOPUR','SHIVPURI','SIDHI','SINGROULI','TIKAMGARH','UJJAIN','UMARIA','VIDISHA'],
+    "maharastra": ["Maharastra"],
+    "manipur": ["Manipur"],
+    "meghalaya": ["Meghalaya"],
+    "mizoram": ["Mizoram"],
+    "nagaland": ["Nagaland"],
+    "odisha": ["Odisha"],
+    "punjab": ["Punjab"],
+    "rajasthan": ["Rajasthan"],
+    "sikkim": ["Sikkim"],
+    "tamilnadu": ["Tamilnadu"],
+    "telangana": ["Telangana"],
+    "tripura": ["Tripura"],
+    "uttarpradesh": ["Uttarpradesh"],
+    "uttarakhand": ["Uttarakhand"],
+    "wbengal": ["West Bengal"],
   };
+
+  const handleStateChange = (e: CustomEvent) => {
+    setSelectedState(e.detail.value);
+    setSelectedCity('All'); // Reset selected city when state changes
+  };
+
+  const handleCityChange = (e: CustomEvent) => {
+    setSelectedCity(e.detail.value);
+  };
+
+  const handleSearchTextChange = (e: CustomEvent) => {
+    setSearchText(e.detail.value);
+  };
+
+  // Filter cities based on search text
+  const filteredCities = selectedState !== 'All' ? stateCities[selectedState].filter(city =>
+    city.toLowerCase().includes(searchText.toLowerCase())
+  ) : Object.values(stateCities).flat().filter(city =>
+    city.toLowerCase().includes(searchText.toLowerCase())
+  );
 
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonRow className="ion-align-items-center" style={{ fontSize: "1.4em" }}>
+          <IonRow className="ion-align-items-center ion-text-center" style={{ fontSize: "1.4em" }}>
             <IonCol size="2">
+              <IonMenuButton style={{fontSize:"1.6em"}}/>
             </IonCol>
-            <IonCol size="10">
-              Elements
+            <IonCol>
+            </IonCol>
+            <IonCol size="2">
+              <IonIcon id="click-trigger" size="large" icon={personCircle} />
             </IonCol>
           </IonRow>
         </IonToolbar>
+        <IonSearchbar value={searchText} onIonInput={handleSearchTextChange} />
       </IonHeader>
       <Common>
-        <IonItemGroup>
-          <IonItemDivider>
-            <IonLabel>Forms</IonLabel>
-          </IonItemDivider>
-
-          <IonItem>
-            <IonLabel>Placeholder Labels</IonLabel>
-          </IonItem>
-          <IonItem lines="none">
-            <IonLabel>Inline Labels</IonLabel>
-          </IonItem>
-          <IonItem lines="none">
-            <IonLabel>Stacked Labels</IonLabel>
-          </IonItem>
-          <IonItem lines="none">
-            <IonLabel>Floating Labels</IonLabel>
-          </IonItem>
-          <IonItem lines="none">
-            <IonLabel>Inset Forms</IonLabel>
-          </IonItem>
-          <IonItem lines="none">
-            <IonLabel>Inset Inputs</IonLabel>
-          </IonItem>
-          <IonItem lines="none">
-            <IonLabel>Input Icons</IonLabel>
-          </IonItem>
-          <IonItem lines="none">
-            <IonLabel>Form Buttons</IonLabel>
-          </IonItem>
-        </IonItemGroup>
-        <IonItemGroup>
-          <IonItemDivider>
-            <IonLabel>Other controls</IonLabel>
-          </IonItemDivider>
-
-          <IonItem>
-            <IonLabel>Toggle</IonLabel>
-          </IonItem>
-          <IonItem lines="none">
-            <IonLabel>Checkbox</IonLabel>
-          </IonItem>
-          <IonItem lines="none">
-            <IonLabel>Radio Buttons</IonLabel>
-          </IonItem>
-          <IonItem lines="none">
-            <IonLabel>Range</IonLabel>
-          </IonItem>
-          <IonItem lines="none">
-            <IonLabel>Select</IonLabel>
-          </IonItem>
-        </IonItemGroup>
-        <IonItemGroup>
-          <IonItemDivider>
-            <IonLabel>Tabs</IonLabel>
-          </IonItemDivider>
-
-          <IonItem>
-            <IonLabel>Icon-only</IonLabel>
-          </IonItem>
-          <IonItem lines="none">
-            <IonLabel>Top Icon</IonLabel>
-          </IonItem>
-          <IonItem lines="none">
-            <IonLabel>Left Icon</IonLabel>
-          </IonItem>
-          <IonItem lines="none">
-            <IonLabel>Striped Style</IonLabel>
-          </IonItem>
-        </IonItemGroup>
+        <IonRow>
+          <IonCol>
+            <IonSelect fill="outline" value={selectedState} onIonChange={handleStateChange} interface="popover" placeholder="Select State">
+              <IonSelectOption value="All">All</IonSelectOption>
+                {Object.keys(stateCities).map((state, index) => (
+                  <IonSelectOption key={index} value={state}>{state}</IonSelectOption>
+                ))}
+            </IonSelect>
+          </IonCol>
+          <IonCol>
+            <IonSelect fill="outline" value={selectedCity} onIonChange={handleCityChange} interface="popover" placeholder="Select City">
+              <IonSelectOption value="All">All</IonSelectOption>
+                {selectedState !== 'All' && stateCities[selectedState].map((city, index) => (
+                  <IonSelectOption key={index} value={city}>{city}</IonSelectOption>
+                ))}
+                {selectedState === 'All' && filteredCities.map((city, index) => (
+                  <IonSelectOption key={index} value={city}>{city}</IonSelectOption>
+                ))}
+            </IonSelect>
+          </IonCol>
+        </IonRow>
 
       </Common>
     </IonPage>

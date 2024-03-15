@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonActionSheet, IonAlert, IonButton, IonCard, IonCol, IonContent, IonFooter, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonPage, IonRow, IonToast, IonToolbar } from '@ionic/react';
+import { IonActionSheet, IonAlert, IonButton, IonCard, IonCol, IonContent, IonFooter, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonPage, IonRow, IonTabBar, IonTabButton, IonToast, IonToolbar } from '@ionic/react';
 import { call, cart, imagesOutline, logoFacebook, mail, mapOutline, megaphone, star, starOutline } from 'ionicons/icons';
 import Common from '../components/Common';
 
@@ -119,6 +119,28 @@ const Home: React.FC = ({ onChange }) => {
         </IonRow>
       </Common>
       <IonFooter>
+        <IonTabBar>
+          <IonTabButton style={{fontSize:"1.2em"}} tab="tab1" href="/localstorage">
+            <IonLabel>
+              <span>LocalStorage</span>
+            </IonLabel>
+          </IonTabButton>
+          <IonTabButton style={{fontSize:"1.2em"}} tab="tab2" href="/swipeablecards">
+            <IonLabel>
+              <span>Swipeable Cards</span>
+            </IonLabel>
+          </IonTabButton>
+          <IonTabButton style={{fontSize:"1.2em"}} tab="tab3" href="/tinder">
+            <IonLabel>
+              <span>Tinder Cards</span>
+            </IonLabel>
+          </IonTabButton>
+          <IonTabButton style={{fontSize:"1.2em"}} tab="tab4" href="/charts">
+            <IonLabel>
+              <span>Charts</span>
+            </IonLabel>
+          </IonTabButton>
+        </IonTabBar>
       </IonFooter>
     </IonPage>
   );
